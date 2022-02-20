@@ -1,4 +1,4 @@
-webbcrawl is a a simple command-line tool to recursively list the contents of a JWST data directory, usually as downloaded from the Mikulski Archive for Space Telescopes (MAST)
+spew is a simple command-line tool to quickly visualize JWST 1D spectra as created by the JWST Calibration Pipeline. Spew can display one or more spectra in the same basic matplotlib window. 
 
 This software is provided as-is, with no warranty.
 
@@ -15,9 +15,9 @@ To be uploaded to pypi
 
 Basic command line usage:
 ------------------------
-webbcrawl --options path 
+spew "1d spectrum"
    
 example:
 
-webbcrawl --include_path MAST_2022-02-08T0000 
-# spew
+spew "det_image_*extract1dstep.fits"
+
