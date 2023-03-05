@@ -6,10 +6,10 @@ import matplotlib.pylab as plt
 from astropy.io import fits
 
 class spew():
-    
+
 #    def __init__(self,pattern,help=False,aspect=2,nozero=False):
     def __init__(self,arguments):
-        
+
         # Store attributes
         pattern = arguments['<pattern>']
         self.aspect = float(arguments['--aspect'])
@@ -18,12 +18,12 @@ class spew():
         # Identify all relevant files
         files = self.find_files(pattern)
 
-        # load data from 
+        # load data from
         specs,hdrs = self.read_specs(files)
- 
+
         # Plot all data interactively
         self.create_plot(specs,files)
- 
+
     def find_files(self,pattern):
 
         if len(pattern)>1:
@@ -45,20 +45,24 @@ class spew():
             hdrs.append(hdr)
 
         return specs,hdrs
-    
+
     def create_plot(self,specs,files):
 
-        plt.figure(figsize=(9,9/self.aspect))    
+        plt.figure(figsize=(9,9/self.aspect))
         for spec,ff in zip(specs,files):
-            wave  = spec['WAVELENGTH']
-            fdens = spec['FLUX']
+            try:
+                wave  = spec['WAVELENGTH']
+                fdens = spec['FLUX']
+            except:
+                wave  = spec['wavelength']
+                fdens = spec['fluxdensity']                
             if self.nozero:
                 fdens[fdens==0.0] = np.nan
-                
+
             plt.step(wave,fdens,where='mid')
-        
+
         plt.xlabel('Wavelength [$\mu$m]')
         plt.ylabel('Flux density [Jy]')
         plt.title(ff)
-        
+
         plt.show()
