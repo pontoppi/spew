@@ -15,9 +15,9 @@ To be uploaded to pypi
 
 Basic command line usage:
 ------------------------
-spew "1d spectrum"
+spew "<1d spectrum>"
    
 example:
-
+spew fztau_1d_v3.0.fits
 spew "det_image_*extract1dstep.fits"
 
