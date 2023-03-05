@@ -1,4 +1,4 @@
-spew is a simple command-line tool to quickly visualize JWST 1D spectra as created by the JWST Calibration Pipeline. Spew can display one or more spectra in the same basic matplotlib window. 
+spew is a simple command-line tool to quickly visualize JWST 1D spectra as created by the JWST Calibration Pipeline and some other calibration scripts. Spew can display one or more spectra in the same basic matplotlib window. 
 
 This software is provided as-is, with no warranty.
 
