@@ -59,7 +59,7 @@ class spew():
             if self.nozero:
                 fdens[fdens==0.0] = np.nan
 
-            plt.step(wave,fdens,where='mid',label='ff')
+            plt.step(wave,fdens,where='mid',label=ff)
 
         plt.xlabel('Wavelength [$\mu$m]')
         plt.ylabel('Flux density [Jy]')
