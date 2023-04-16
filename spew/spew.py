@@ -55,14 +55,14 @@ class spew():
                 fdens = spec['FLUX']
             except:
                 wave  = spec['wavelength']
-                fdens = spec['fluxdensity']                
+                fdens = spec['fluxdensity']
             if self.nozero:
                 fdens[fdens==0.0] = np.nan
 
-            plt.step(wave,fdens,where='mid')
+            plt.step(wave,fdens,where='mid',label='ff')
 
         plt.xlabel('Wavelength [$\mu$m]')
         plt.ylabel('Flux density [Jy]')
-        plt.title(ff)
+        plt.legend()
 
         plt.show()
