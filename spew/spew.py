@@ -14,6 +14,8 @@ class spew():
         pattern = arguments['<pattern>']
         self.aspect = float(arguments['--aspect'])
         self.nozero = arguments['--nozero']
+        self.ylog = arguments['--ylog']
+        self.ext = int(arguments['--ext'])
 
         # Identify all relevant files
         files = self.find_files(pattern)
@@ -39,8 +41,8 @@ class spew():
         specs = []
         hdrs = []
         for ff in files:
-            spec = fits.getdata(ff)
-            hdr  = fits.getheader(ff)
+            spec = fits.getdata(ff,self.ext)
+            hdr  = fits.getheader(ff,self.ext)
             specs.append(spec)
             hdrs.append(hdr)
 
@@ -59,8 +61,11 @@ class spew():
             if self.nozero:
                 fdens[fdens==0.0] = np.nan
 
-            plt.step(wave,fdens,where='mid',label=ff)
+            plt.step(wave,fdens,where='mid',label=ff,lw=0.5)
 
+        if self.ylog:
+            plt.yscale('log')
+            
         plt.xlabel('Wavelength [$\mu$m]')
         plt.ylabel('Flux density [Jy]')
         plt.legend()
